@@ -1,7 +1,7 @@
 package fr.iut.larochelle;
 
-import PTS2.DataBase.DBConnection;
-import PTS2.DataBase.DBProperties;
+import fr.iut.larochelle.database.DBConnection;
+import fr.iut.larochelle.database.DBProperties;
 import java.sql.Connection;
 import java.sql.SQLException;
 import javafx.application.Application;
@@ -20,7 +20,7 @@ public class PTS2 extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         
-        Parent root = FXMLLoader.load(getClass().getResource("/PTS2/connexion/FXMLConnexion.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fr/iut/larochelle/connexion/FXMLConnexion.fxml"));
         
         Scene scene = new Scene(root);
         stage.setResizable(false);
@@ -45,7 +45,7 @@ public class PTS2 extends Application {
         Connection conn = null;
         try {
             conn = myDemoDBConn.getConnection();
-            System.out.println("Connection Established Successfull and the DATABASE NAME IS:"
+            System.out.println("Connection Established Successfull and the DATABASE NAME IS : "
                     + conn.getMetaData().getDatabaseProductName());
             myDemoDBConn.closeConnection();
         } catch (SQLException e) {

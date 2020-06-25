@@ -1,4 +1,4 @@
-![Illustration : logo projet](./logo-pts2rue.png)
+![Illustration : logo projet](./src/fr/iut/larochelle/assets/logo-pts2rue.png)
 
 Projet Tutoré Semestre 2 - DUT Informatique La Rochelle - Année 2017-2018
 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<SplitPane dividerPositions="0.21" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.iut.larochelle.professeur.FXMLProfesseurController">
+  <items>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <Label fx:id="messageDuJour" layoutX="60.0" layoutY="28.0" prefHeight="25.0" prefWidth="263.0" text="Message du jour...">
+               <font>
+                  <Font name="System Italic" size="16.0" />
+               </font></Label>
+            <Button fx:id="btnModerer" layoutX="326.0" layoutY="18.0" mnemonicParsing="false" onAction="#ouvrirFenetreModeration" prefHeight="44.0" prefWidth="169.0" text="Modérer le message">
+               <graphic>
+                  <ImageView fitHeight="41.0" fitWidth="38.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/modifier.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+         </children>
+      </AnchorPane>
+    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+         <children>
+            <SplitPane dividerPositions="0.5" prefHeight="310.0" prefWidth="600.0">
+              <items>
+                <AnchorPane fx:id="conteneurCalendrier" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                          
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="157.0" prefWidth="165.0">
+                     <children>
+                        <Button fx:id="btnEditQR" layoutX="63.0" layoutY="55.0" mnemonicParsing="false" onAction="#ouvrirEditionQuestion" text="Editer les questions">
+                           <graphic>
+                              <ImageView fitHeight="57.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/question.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnEditEvent" layoutX="57.0" layoutY="126.0" mnemonicParsing="false" onAction="#ouvrirEditionEvenement" text="Editer les évenements">
+                           <graphic>
+                              <ImageView fitHeight="57.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/calendar.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                        <Button fx:id="btnAjouter" disable="true" layoutX="59.0" layoutY="202.0" mnemonicParsing="false" onAction="#accederGererUtilisateur" text="Ajouter un utilisateur">
+                           <graphic>
+                              <ImageView fitHeight="57.0" fitWidth="46.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../assets/addUser.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+         </children></AnchorPane>
+  </items>
+</SplitPane>
