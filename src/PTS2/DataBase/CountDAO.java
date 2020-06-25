@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.DataBase;
 
-import PTS2.modele.Etudiant;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -18,16 +12,16 @@ import java.sql.Statement;
 public class CountDAO {
     
     private Connection conn;
-
+    
     public CountDAO() {
     }
-
+    
     
     /**
-     * 
+     *
      * @param table : le nom de la table à compter
      * @return
-     * @throws SQLException 
+     * @throws SQLException
      */
     public static int getCount(String table) throws SQLException {
         DBConnection myDemoDBConn = new DBConnection();
@@ -44,8 +38,8 @@ public class CountDAO {
             {
                 return res.getInt("compte");
             }
-                //return res.getInt("compte")
-
+            //return res.getInt("compte")
+            
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {

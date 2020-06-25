@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.gererUtilisateur;
 
 import PTS2.DataBase.UtilisateurDAO;
@@ -25,14 +20,14 @@ import javafx.scene.control.TextField;
 
 /**
  * <h1> Controller Ajouter un Utilisateur</h1>
- * 
+ *
  * FXML controller, permettant d'ajouter un nouvel utilisateur
  * dans la base de données.
  *
  * @author maxim
  */
 public class FXMLAjouterUtilisateurController implements Initializable {
-
+    
     @FXML
     private TextField username;
     
@@ -63,13 +58,13 @@ public class FXMLAjouterUtilisateurController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         this.niveau.setItems(FXCollections.observableArrayList(Niveau.values()));
         this.matiere.setItems(FXCollections.observableArrayList(Matiere.values()));
-    }    
+    }
     
     /**
      * <h2>Méthode pour sauvegarder un utilisateur dans la BD.</h2>
      * @author enzo
-     * 
-     * @throws SQLException 
+     *
+     * @throws SQLException
      */
     public void sauvegarderUtilisateur() throws SQLException{
         UtilisateurDAO userTemp = new UtilisateurDAO();
@@ -86,9 +81,9 @@ public class FXMLAjouterUtilisateurController implements Initializable {
             userTemp.addEtudiant(etudiant);
         }
     }
-
+    
     
     public void recupererTypeUser(){
-    
+        
     }
 }

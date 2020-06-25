@@ -1,15 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.stats;
 
 import PTS2.DataBase.StatistiqueDAO;
-import PTS2.modele.Etudiant;
-import PTS2.modele.Niveau;
 import PTS2.modele.Statistiques;
-import PTS2.modele.Utilisateur;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;

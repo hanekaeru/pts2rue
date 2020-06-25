@@ -1,15 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.principal;
 
 import PTS2.DataBase.MessageDuJourDAO;
 import PTS2.DataBase.QuestionDAO;
 import PTS2.question.FXMLQuestionController;
 import PTS2.stats.FXMLStatsController;
-//import PTS2.modele.Question;
 import PTS2.utilisateur.FXMLUtilisateurController;
 import PTS2.configuration.FXMLConfigurationController;
 import PTS2.connexion.FXMLConnexionController;
@@ -21,23 +15,16 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.MonthDay;
-import java.util.Date;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Insets;
-import static javafx.scene.AccessibleAttribute.FONT;
 import javafx.scene.Cursor;
 import javafx.scene.Node;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.DateCell;
@@ -48,10 +35,6 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Modality;
@@ -60,12 +43,12 @@ import javafx.stage.StageStyle;
 import javafx.stage.Window;
 import javafx.util.Callback;
 
-     /**
-     * <h1>Controller Principale</h1>.
-     * Controller gérant l'interface principal.
-     * @author antonin, maxime, kyllian
-     *
-     */
+/**
+ * <h1>Controller Principale</h1>.
+ * Controller gérant l'interface principal.
+ * @author antonin, maxime, kyllian
+ *
+ */
 public class FXMLPrincipalController implements Initializable {
     
     @FXML
@@ -101,7 +84,7 @@ public class FXMLPrincipalController implements Initializable {
      * <h2>Ouvrir fenetre Stats</h2>
      * Ouvre la fenetre de statistiques de l'étudiant.
      * @author maxime
-     * @throws IOException 
+     * @throws IOException
      */
     public void ouvrirFenetreStats() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/PTS2/stats/FXMLStats.fxml") ) ;
@@ -125,14 +108,14 @@ public class FXMLPrincipalController implements Initializable {
         fenetreSecondaire.showAndWait() ;
     }
     
-     /**
+    /**
      * <h2>Ouvrir fenetre question</h2>
-     * Ouvre le fenetre pour repondre a une question.
+     * Ouvre la fenetre pour repondre a une question.
+     *
      * @author maxime
      * @param date
-     * @throws IOException 
+     * @throws IOException
      */
-
     public void ouvrirFenetreQuestion(LocalDate item) throws IOException, SQLException{
         FXMLPrincipalController.question = null;
         
@@ -144,7 +127,7 @@ public class FXMLPrincipalController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXMLQuestionController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/PTS2/question/FXMLQuestion.fxml") ) ;
         SplitPane laPage = (SplitPane) leLoader.load() ;
         Stage fenetreSecondaire= new Stage() ;
@@ -166,11 +149,11 @@ public class FXMLPrincipalController implements Initializable {
         fenetreSecondaire.showAndWait() ;
     }
     
-     /**
+    /**
      * <h2>Ouvrir fenetre Config</h2>
      * Ouvre la fenetre de configuration de l'etudiant.
      * @author maxime
-     * @throws IOException 
+     * @throws IOException
      */
     public void ouvrirFenetreConfiguration() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/PTS2/configuration/FXMLConfiguration.fxml") ) ;
@@ -197,7 +180,7 @@ public class FXMLPrincipalController implements Initializable {
     /**
      * <h2>Ouvrir fenetre Utilsateur</h2>
      * @author antonin
-     * @throws IOException 
+     * @throws IOException
      */
     public void ouvrirFenetreUtilisateur() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/PTS2/utilisateur/FXMLUtilisateur.fxml"));
@@ -223,7 +206,7 @@ public class FXMLPrincipalController implements Initializable {
     
     /**
      * <h2>Quitter la fenetre</h2>
-     * @author maxime 
+     * @author maxime
      */
     public void quitter(){
         Stage fenetre = (Stage)seDeconnecter.getScene().getWindow();
@@ -252,7 +235,7 @@ public class FXMLPrincipalController implements Initializable {
         FXMLConnexionController leController;
         
         leController = leLoader.getController();
-       
+        
         quitter();
         
         fenetreSecondaire.showAndWait() ;
@@ -262,7 +245,7 @@ public class FXMLPrincipalController implements Initializable {
      * <h2>Init Calendrier</h2>
      * Méthode implementant la calendrier des questions.
      * @author antonin
-     * 
+     *
      */
     public void initCalendrier(){
         DatePicker dateTest = new DatePicker();
@@ -277,7 +260,7 @@ public class FXMLPrincipalController implements Initializable {
                     {
                         super.updateItem(item, empty);
                         
-
+                        
                         
                         if (MonthDay.from(item).equals(MonthDay.of(6, 9)))
                         {
@@ -355,7 +338,7 @@ public class FXMLPrincipalController implements Initializable {
                                     } catch (SQLException ex) {
                                         Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                                     }
-                
+                                    
                                 }
                             });
                             
@@ -379,7 +362,7 @@ public class FXMLPrincipalController implements Initializable {
             }
         };
         dateTest.setDayCellFactory(dayCellFactory);
-
+        
         DatePickerSkin datePickerSkin = new DatePickerSkin(dateTest);
         //datePickerSkin.computeMaxWidth​(double height, double topInset, double rightInset, double bottomInset, double leftInset);
         //datePickerSkin.setMaxWidth(150);
@@ -407,10 +390,10 @@ public class FXMLPrincipalController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         
         //majCalendrier(); ??
         initCalendrier();
-    }    
+    }
     
 }

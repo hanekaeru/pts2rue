@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.DataBase;
 
 import java.sql.Connection;
@@ -16,21 +11,21 @@ import java.sql.Statement;
  */
 public class MessageDuJourDAO {
     private Connection conn;
-
+    
     public MessageDuJourDAO() {}
     
     public static String getMsg() throws SQLException {
         DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
-
+        
         String query = "select message from messagedujour where messagedujour.idMessageDuJour=1";
         
-         try {
-             ResultSet res = stmt.executeQuery(query);
-             if(res.next()){
+        try {
+            ResultSet res = stmt.executeQuery(query);
+            if(res.next()){
                 return res.getString("message");
-             }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -50,21 +45,21 @@ public class MessageDuJourDAO {
                 }
             }
         }
-         return null;
+        return null;
     }
     
     public String getIdEtudiant() throws SQLException {
         DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
-
+        
         String query = "select idetudiant from messagedujour where messagedujour.idMessageDuJour=1";
         
-         try {
-             ResultSet res = stmt.executeQuery(query);
-             if(res.next()){
+        try {
+            ResultSet res = stmt.executeQuery(query);
+            if(res.next()){
                 return res.getString("idetudiant");
-             }
+            }
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -84,19 +79,19 @@ public class MessageDuJourDAO {
                 }
             }
         }
-         return null;
+        return null;
     }
     
     public static void setMsg(String newMsg) throws SQLException {
         DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
-
-        String query = "update messagedujour set messagedujour.message='"
-        + newMsg    
-        + "' where messagedujour.idMessageDuJour=1";
         
-         try {
+        String query = "update messagedujour set messagedujour.message='"
+                + newMsg
+                + "' where messagedujour.idMessageDuJour=1";
+        
+        try {
             stmt.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -124,12 +119,12 @@ public class MessageDuJourDAO {
         DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
-
-        String query = "update messagedujour set messagedujour.idetudiant="
-        + idEtudiant 
-        + " where messagedujour.idMessageDuJour=1";
         
-         try {
+        String query = "update messagedujour set messagedujour.idetudiant="
+                + idEtudiant
+                + " where messagedujour.idMessageDuJour=1";
+        
+        try {
             stmt.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -150,5 +145,5 @@ public class MessageDuJourDAO {
                 }
             }
         }
-    }   
+    }
 }

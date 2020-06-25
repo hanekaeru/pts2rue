@@ -1,14 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.DataBase;
 
-import PTS2.modele.Etudiant;
 import PTS2.modele.Matiere;
 import PTS2.modele.Niveau;
-import PTS2.modele.Professeur;
 import PTS2.modele.Question;
 import PTS2.modele.UE;
 import java.sql.Connection;
@@ -24,16 +17,16 @@ import java.util.ArrayList;
  * @author Enzo
  */
 public class QuestionDAO {
-
-
+    
+    
     public QuestionDAO() {}
-
+    
     
     /**
      * Permet 'lajout d'une question dans la base de données à partir de l'objet du modèle
      * author Martin
      * @param question l'objet du modèle à inscrire dans la base de données
-     * @throws SQLException 
+     * @throws SQLException
      */
     //TODO : -rendre anonyme pour chaque type de question
     public void addQuestion(Question question) throws SQLException {
@@ -48,22 +41,22 @@ public class QuestionDAO {
             String reponses = "";
             for(String e : question.getReponses())
                 reponses += e + "&#&";
-                
+            
             String query = "";
             query = "insert into Question"
-            + " values("
-            + "'" + question.getMatiere().getMatiere()       + "', "
-            +       question.getNiveau().getNiveau()         + ", "
-            + "'" + question.getDatePubliee().format(DateTimeFormatter.ISO_DATE).toString() + "', "
-            + "'" + question.getQuestion()                   + "', "
-            + "'" + question.getBonneReponse()               + "', "
-            + "'" + reponses                                 + "', "
-            + "'" + question.getImage()                      + "', "
-            + "'" + "qcm" + "', " //change en fonction des class anonymes
-            + "'11'" + ", " //change en fonction des class anonymes                   
-            + "5" + ", "
-            + idQuestion 
-            + ")";
+                    + " values("
+                    + "'" + question.getMatiere().getMatiere()       + "', "
+                    +       question.getNiveau().getNiveau()         + ", "
+                    + "'" + question.getDatePubliee().format(DateTimeFormatter.ISO_DATE).toString() + "', "
+                    + "'" + question.getQuestion()                   + "', "
+                    + "'" + question.getBonneReponse()               + "', "
+                    + "'" + reponses                                 + "', "
+                    + "'" + question.getImage()                      + "', "
+                    + "'" + "qcm" + "', " //change en fonction des class anonymes
+                    + "'11'" + ", " //change en fonction des class anonymes
+                    + "5" + ", "
+                    + idQuestion
+                    + ")";
             
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
@@ -93,7 +86,7 @@ public class QuestionDAO {
      * Permet de récupérer un objet du modèle Question à partir d'une date
      * @param date la date du jour à laquelle la quesiton est parrue
      * @return un objet Question
-     * @throws SQLException 
+     * @throws SQLException
      * @deprecated Il faut aussi demander le sélécteur d'année en fonction de l'utilisateur connecté
      */
     public Question getQuestion(LocalDate date) throws SQLException {
@@ -102,9 +95,9 @@ public class QuestionDAO {
         Statement stmt = conn.createStatement();
         
         String query = "select * from Question where "
-        + "datePubliee = '" + date.format(DateTimeFormatter.ISO_DATE).toString() + "'";
+                + "datePubliee = '" + date.format(DateTimeFormatter.ISO_DATE).toString() + "'";
         
-
+        
         try {
             ResultSet res = stmt.executeQuery(query);
             if (res.next())
@@ -117,7 +110,7 @@ public class QuestionDAO {
                 ArrayList<String> reponses = toList(res.getString("reponses"));
                 UE ue = UE.getUE(res.getString("ue"));
                 
-
+                
                 return new Question(matiere, niveau, dateRes, question, bonneReponse, reponses, ue);
             }
         } catch (SQLException e) {
@@ -177,11 +170,11 @@ public class QuestionDAO {
             }
         }
     }
-
+    
     
     
     /* TODO :   - removeQuestion(LocalDate)
-                - getQuestion(LocalDate, int niveau)
+    - getQuestion(LocalDate, int niveau)
     */
     
     
@@ -195,7 +188,7 @@ public class QuestionDAO {
     private ArrayList<String> toList(String chaine)
     {
         String chaineListee[];
-
+        
         chaineListee = chaine.split("&#&");
         
         ArrayList<String> res = new ArrayList<>();

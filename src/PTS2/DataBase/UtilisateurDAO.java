@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.DataBase;
 
 import PTS2.modele.Administrateur;
@@ -16,9 +11,6 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  *
@@ -26,9 +18,9 @@ import java.util.Scanner;
  */
 public class UtilisateurDAO {
     private Connection conn;
-
+    
     public UtilisateurDAO() {}
-
+    
     public void addEtudiant(Etudiant etudiant) throws SQLException {
         int id = CountDAO.getCount("Utilisateur")+1;
         DBConnection myDemoDBConn = new DBConnection();
@@ -37,14 +29,14 @@ public class UtilisateurDAO {
         
         try {
             String query = "insert into Utilisateur "
-            + "values('" + etudiant.getUsername()  
-            + "', '" + etudiant.getPassword() 
-            + "', '" + "Etudiant"
-            + "', " + "false" + ", "
-            + etudiant.getNiveau().getNiveau()     
-            + ", NULL, "
-            + id
-            + ")";
+                    + "values('" + etudiant.getUsername()
+                    + "', '" + etudiant.getPassword()
+                    + "', '" + "Etudiant"
+                    + "', " + "false" + ", "
+                    + etudiant.getNiveau().getNiveau()
+                    + ", NULL, "
+                    + id
+                    + ")";
             
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
@@ -77,13 +69,13 @@ public class UtilisateurDAO {
         Statement stmt = null;
         try {
             String query = "insert into Utilisateur "
-            + "values('" + professeur.getUsername() 
-            + "', '" + professeur.getPassword() 
-            + "', " + "'Professeur', " 
-            + "false, " 
-            + "NULL, '" 
-            + professeur.getMatiere().getMatiere()  
-            + "', " + id + ")";
+                    + "values('" + professeur.getUsername()
+                    + "', '" + professeur.getPassword()
+                    + "', " + "'Professeur', "
+                    + "false, "
+                    + "NULL, '"
+                    + professeur.getMatiere().getMatiere()
+                    + "', " + id + ")";
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
             conn.commit();
@@ -114,15 +106,15 @@ public class UtilisateurDAO {
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = null;
         try {
-             String query = "insert into Utilisateur "
-            + "values('" + professeurAdmin.getUsername() 
-            + "', '" + professeurAdmin.getPassword() 
-            + "', " + "'Administrateur', " 
-            + "false, " 
-            + "NULL, '" 
-            + professeurAdmin.getMatiere().getMatiere()  
-            +"', " + id + ")";
-             
+            String query = "insert into Utilisateur "
+                    + "values('" + professeurAdmin.getUsername()
+                    + "', '" + professeurAdmin.getPassword()
+                    + "', " + "'Administrateur', "
+                    + "false, "
+                    + "NULL, '"
+                    + professeurAdmin.getMatiere().getMatiere()
+                    +"', " + id + ")";
+            
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
             conn.commit();
@@ -182,12 +174,12 @@ public class UtilisateurDAO {
         DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
-
-        String query = "update utilisateur set utilisateur.password='"
-        + newPassword     
-        + "' where utilisateur.username='" + username + "'";
         
-         try {
+        String query = "update utilisateur set utilisateur.password='"
+                + newPassword
+                + "' where utilisateur.username='" + username + "'";
+        
+        try {
             stmt.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -215,10 +207,10 @@ public class UtilisateurDAO {
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
         
-        String query = "select username, password, userType from utilisateur where username='" 
-        + username
-        + "' and password='"
-        + password + "'";
+        String query = "select username, password, userType from utilisateur where username='"
+                + username
+                + "' and password='"
+                + password + "'";
         
         try {
             ResultSet res = stmt.executeQuery(query);
@@ -252,9 +244,9 @@ public class UtilisateurDAO {
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
         
-        String query = "select username, idutilisateur from utilisateur where username='" 
-        + username
-        + "'";
+        String query = "select username, idutilisateur from utilisateur where username='"
+                + username
+                + "'";
         
         try {
             ResultSet res = stmt.executeQuery(query);
@@ -288,9 +280,9 @@ public class UtilisateurDAO {
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
         
-        String query = "select password from utilisateur where username='" 
-        + username
-        + "'";
+        String query = "select password from utilisateur where username='"
+                + username
+                + "'";
         
         try {
             ResultSet res = stmt.executeQuery(query);
@@ -324,9 +316,9 @@ public class UtilisateurDAO {
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
         
-        String query = "select username, userType from utilisateur where username='" 
-        + username
-        + "'";
+        String query = "select username, userType from utilisateur where username='"
+                + username
+                + "'";
         
         try {
             ResultSet res = stmt.executeQuery(query);
@@ -363,18 +355,18 @@ public class UtilisateurDAO {
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
         
-        String query = "select * from utilisateur where username='" 
-        + username
-        + "' and password='"
-        + password + "'";
+        String query = "select * from utilisateur where username='"
+                + username
+                + "' and password='"
+                + password + "'";
         
         try {
             ResultSet res = stmt.executeQuery(query);
             if (res.next()) {
                 Niveau niveau = Niveau.getNiveau(res.getString("niveau"));
-	        Statistiques statistique = statistiqueDAO.newStatistique(username);
-	        int classement = statistiqueDAO.getAttribut(username, "classement");
-	        int points = statistiqueDAO.getAttribut(username, "points");
+                Statistiques statistique = statistiqueDAO.newStatistique(username);
+                int classement = statistiqueDAO.getAttribut(username, "classement");
+                int points = statistiqueDAO.getAttribut(username, "points");
                 
                 return new Etudiant(username, password, niveau, statistique, classement, points);
             }
@@ -406,15 +398,15 @@ public class UtilisateurDAO {
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
         
-        String query = "select * from utilisateur where username='" 
-        + username
-        + "' and password='"
-        + password + "'";
+        String query = "select * from utilisateur where username='"
+                + username
+                + "' and password='"
+                + password + "'";
         
         try {
             ResultSet res = stmt.executeQuery(query);
             if (res.next()) {
-	        Matiere matiere = Matiere.getMatiere(res.getString("matiere"));
+                Matiere matiere = Matiere.getMatiere(res.getString("matiere"));
                 
                 return new Professeur(username, password, matiere);
             }
@@ -446,16 +438,16 @@ public class UtilisateurDAO {
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
         
-        String query = "select * from utilisateur where username='" 
-        + username
-        + "' and password='"
-        + password + "'";
+        String query = "select * from utilisateur where username='"
+                + username
+                + "' and password='"
+                + password + "'";
         
         try {
             ResultSet res = stmt.executeQuery(query);
             if (res.next()) {
                 Niveau niveau = Niveau.getNiveau(res.getString("niveau"));
-	        Matiere matiere = Matiere.getMatiere(res.getString("matiere"));
+                Matiere matiere = Matiere.getMatiere(res.getString("matiere"));
                 
                 return new Administrateur(username, password, matiere);
             }

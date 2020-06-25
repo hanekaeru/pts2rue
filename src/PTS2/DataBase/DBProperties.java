@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.DataBase;
 
 import java.io.FileInputStream;
@@ -16,15 +11,14 @@ import java.util.Properties;
 public class DBProperties {
     static Properties props = new Properties();
     FileInputStream in = null;
-
+    
     public DBProperties() {
         try {
-
-            in = new FileInputStream("src/databasedb.properties");
+            
+            in = new FileInputStream("src/fr/iut/larochelle/databasedb.properties");
             props.load(in);
-
+            
         } catch (IOException ex) {
-
             System.out.println(DBProperties.class.getName() + ex.getMessage());
         }
     }
@@ -32,11 +26,11 @@ public class DBProperties {
     public static String getDbUrl () {
         return props.getProperty("url");
     }
-
+    
     public static String getDbUser () {
         return props.getProperty("user");
     }
-
+    
     public static String getDbPasswd () {
         return props.getProperty("passwd");
     }

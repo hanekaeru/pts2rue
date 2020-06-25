@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.gestionquestion;
 
 import PTS2.modele.Matiere;
@@ -18,7 +13,7 @@ import javafx.scene.control.TableView;
 
 /**
  * <h1> Controller Modifier une Question</h1>
- * 
+ *
  * FXML controller, permettant d'acceder à la modification d'une question
  * dans la base de données.
  *
@@ -26,7 +21,7 @@ import javafx.scene.control.TableView;
  */
 
 public class FXMLModifierQuestionController implements Initializable {
-
+    
     @FXML
     private ComboBox cbMatiere;
     
@@ -50,17 +45,17 @@ public class FXMLModifierQuestionController implements Initializable {
         this.cbMatiere.setItems(  FXCollections.observableArrayList(   Matiere.values()   )  );
         this.tableviewQuestion = new TableView<>();
         tableviewQuestion.getItems().setAll("string", "string");
-    }    
+    }
     
     public void modifierQuestion(){
         
     }
-      
-   public void recupereDansTableau(){
+    
+    public void recupereDansTableau(){
         
     }
-   
-   public void chercherQuestion(){
-              
-    }  
+    
+    public void chercherQuestion(){
+        
+    }
 }

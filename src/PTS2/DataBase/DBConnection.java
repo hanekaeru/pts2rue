@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.DataBase;
 
 import java.sql.Connection;
@@ -15,21 +10,21 @@ import java.sql.SQLException;
  */
 public class DBConnection {
     Connection conn = null;
-
+    
     public DBConnection() {
     }
-
+    
     public Connection getConnection() {
         try {
             // Load Java DB Drivers
             Class.forName("org.apache.derby.jdbc.EmbeddedDriver");
-
+            
             // Establish Connection
             conn = DriverManager
                     .getConnection(DBProperties.getDbUrl(),
                             DBProperties.getDbUser(),
                             DBProperties.getDbPasswd());
-
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         } catch (ClassNotFoundException e) {
@@ -37,7 +32,7 @@ public class DBConnection {
         }
         return conn;
     }
-
+    
     public void closeConnection() {
         try {
             conn.close();
@@ -45,7 +40,7 @@ public class DBConnection {
                     + "user=" + DBProperties.getDbUser() + ";"
                     + "password=" + DBProperties.getDbPasswd() + ";"
                     + "shutdown=true");
-
+            
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }

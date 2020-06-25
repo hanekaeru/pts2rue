@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.connexion;
 
 import PTS2.DataBase.UtilisateurDAO;
@@ -36,19 +31,18 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.SplitPane;
 import javafx.scene.control.TextField;
 import javafx.scene.control.ToggleGroup;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
-    /**
-     * <h1>Controller gérant l'interface de Connexion</h1>.
-     * 
-     * @author antonin, maxime
-     *
-     */
+/**
+ * <h1>Controller gérant l'interface de Connexion</h1>.
+ *
+ * @author antonin, maxime
+ *
+ */
 public class FXMLConnexionController implements Initializable {
     
     @FXML
@@ -124,7 +118,7 @@ public class FXMLConnexionController implements Initializable {
         quitter();
         fenetreSecondaire.showAndWait() ;
     }
- 
+    
     /**
      * <h2>Se connecter </h2>.
      * Méthode pour se connecter.
@@ -136,7 +130,7 @@ public class FXMLConnexionController implements Initializable {
         String user = "INCONNU";
         
         // Test du login + passwd dans la Base de Données (méthode d'Enzo)
-        // si besoin : https://stackoverflow.com/questions/14162225/getting-text-from-password-field 
+        // si besoin : https://stackoverflow.com/questions/14162225/getting-text-from-password-field
         
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
         if (utilisateurDAO.connexion(this.tfUtilisateur.getText(), this.pfMotDePasse.getText())) {
@@ -171,7 +165,7 @@ public class FXMLConnexionController implements Initializable {
         }
     }
     
-        /**
+    /**
      * <h2>Se connecter professeur</h2>.
      * Méthode pour se connecter en tant que professeur.
      * @author antonin
@@ -203,8 +197,8 @@ public class FXMLConnexionController implements Initializable {
         fenetreSecondaire.showAndWait() ;
     }
     
-            /**
-             
+    /**
+     * 
      * <h2>Se connecter etudiant</h2>.
      * Méthode pour se connecter en tant qu'etudiant.
      * @author antonin
@@ -236,7 +230,7 @@ public class FXMLConnexionController implements Initializable {
         fenetreSecondaire.showAndWait() ;
     }
     
-     /**
+    /**
      * <h2>Ouvrir lien</h2>.
      * Méthode pour ouvrir les liens de l'universite et de moodle.
      * @author antonin
@@ -288,6 +282,6 @@ public class FXMLConnexionController implements Initializable {
         this.rbAnnee2.setToggleGroup(tgAnnee);
         
         this.rbAnnee1.setSelected(true);
-    }    
+    }
     
 }

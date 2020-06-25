@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.gererUtilisateur;
 
 import PTS2.DataBase.UtilisateurDAO;
@@ -19,7 +14,7 @@ import javafx.scene.control.TableView;
 
 
 public class FXMLSupprimerUtilisateurController implements Initializable {
-
+    
     /**
      * Initializes the controller class.
      */
@@ -34,16 +29,16 @@ public class FXMLSupprimerUtilisateurController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.cbNiveau.setItems(FXCollections.observableArrayList(Niveau.values()));
-    }    
-   
+    }
+    
     /**
- * <h1> Controller Supprimer un Utilisateur</h1>
- * 
- * FXML controller, permettant de supprimer un utilisateur
- * dans la base de données.
- *
- * @author maxim
- */
+     * <h1> Controller Supprimer un Utilisateur</h1>
+     *
+     * FXML controller, permettant de supprimer un utilisateur
+     * dans la base de données.
+     *
+     * @author maxim
+     */
     public void supprimerUser(){
         UtilisateurDAO userDAO = new UtilisateurDAO();
         Utilisateur user = tableview.getSelectionModel().getSelectedItem();

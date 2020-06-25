@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.DataBase;
 
 import PTS2.modele.Evenement;
@@ -20,7 +15,7 @@ import java.util.ArrayList;
  */
 public class EvenementDAO {
     private Connection conn;
-
+    
     public EvenementDAO() {}
     
     public ArrayList<Evenement> getEvenement(LocalDate datedebut, LocalDate datefin) throws SQLException {
@@ -28,18 +23,18 @@ public class EvenementDAO {
         DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
-
-        String query = "select message from evenement where evenement.datedebut='" +
-        datedebut.format(DateTimeFormatter.ISO_DATE).toString() + "' and evenement.datefin='" +
-        datefin.format(DateTimeFormatter.ISO_DATE).toString() +"'";
         
-         try {
-             ResultSet res = stmt.executeQuery(query);
-             while(res.next()){
+        String query = "select message from evenement where evenement.datedebut='" +
+                datedebut.format(DateTimeFormatter.ISO_DATE).toString() + "' and evenement.datefin='" +
+                datefin.format(DateTimeFormatter.ISO_DATE).toString() +"'";
+        
+        try {
+            ResultSet res = stmt.executeQuery(query);
+            while(res.next()){
                 Evenement evenement = new Evenement(res.getString("message"), datedebut, datefin);
-                listeEvenement.add(evenement);                
-             }
-             return listeEvenement;
+                listeEvenement.add(evenement);
+            }
+            return listeEvenement;
         } catch (SQLException e) {
             e.printStackTrace();
         } finally {
@@ -59,7 +54,7 @@ public class EvenementDAO {
                 }
             }
         }
-         return null;
+        return null;
     }
     
     public void addEvenement(Evenement evenement) throws SQLException {
@@ -67,14 +62,14 @@ public class EvenementDAO {
         DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
-
-        String query = "insert into evenement values('"
-        + evenement.getMessageEvenement()
-        + "', '" + evenement.getDateDebut() 
-        + "', '" + evenement.getDateFin()
-        + "', " + id + ")";
         
-         try {
+        String query = "insert into evenement values('"
+                + evenement.getMessageEvenement()
+                + "', '" + evenement.getDateDebut()
+                + "', '" + evenement.getDateFin()
+                + "', " + id + ")";
+        
+        try {
             stmt.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -104,11 +99,11 @@ public class EvenementDAO {
         Statement stmt = conn.createStatement();
         
         String query = "update evenement set evenement.message='"
-          + newMessage 
-        + "' where evenement.message='"
-        + evenement.getMessageEvenement() + "'";
+                + newMessage
+                + "' where evenement.message='"
+                + evenement.getMessageEvenement() + "'";
         
-         try {
+        try {
             stmt.executeUpdate(query);
         } catch (SQLException e) {
             e.printStackTrace();

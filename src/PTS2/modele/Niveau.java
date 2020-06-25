@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.modele;
 
 /**
@@ -18,15 +13,15 @@ public enum Niveau {
     Niveau(int niveau) {
         this.niveau=niveau;
     }
-
+    
     public int getNiveau() {
         return this.niveau;
     }
-
+    
     public static Niveau getPREMIERE_ANNEE() {
         return PREMIERE_ANNEE;
     }
-
+    
     public static Niveau getDEUXIEME_ANNEE() {
         return DEUXIEME_ANNEE;
     }

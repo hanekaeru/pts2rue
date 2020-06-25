@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.DataBase;
 
 
@@ -18,7 +13,7 @@ import java.sql.Statement;
  * @author Enzo
  */
 public class StatistiqueDAO {
-
+    
     
     public StatistiqueDAO() {
     }
@@ -34,17 +29,17 @@ public class StatistiqueDAO {
     public static void initStatistique(Utilisateur utilisateur) throws SQLException{
         int id = CountDAO.getCount("Utilisateur")+1;
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
-        int idUser = utilisateurDAO.getIdUtilisateur(utilisateur.getUsername());        
-
+        int idUser = utilisateurDAO.getIdUtilisateur(utilisateur.getUsername());
+        
         DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = null;
         
-        try { 
-            String query = "insert into statistique "                    
-            + "values(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, " + idUser + ", " + id                    
-            + ")";
-        
+        try {
+            String query = "insert into statistique "
+                    + "values(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, " + idUser + ", " + id
+                    + ")";
+            
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
             conn.commit();
@@ -80,13 +75,13 @@ public class StatistiqueDAO {
     public int getAttribut(String username, String attribut) throws SQLException{
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
         int id = utilisateurDAO.getIdUtilisateur(username);
-        DBConnection myDemoDBConn = new DBConnection();      
+        DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
         
-        String query = "select " + attribut + " from statistique where idEtudiant=" 
-        + id;
-
+        String query = "select " + attribut + " from statistique where idEtudiant="
+                + id;
+        
         try {
             ResultSet res = stmt.executeQuery(query);
             if (res.next()) {
@@ -120,19 +115,19 @@ public class StatistiqueDAO {
      * @param username le nom du propriétaire des statistiques
      * @param attribut l'attribut à mettre à jour
      * @param nombre   la valeur de l'attribut à mettre à jour
-     * @throws SQLException 
+     * @throws SQLException
      */
     public void setAttribut(String username, String attribut, int nombre) throws SQLException{
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
         int id = utilisateurDAO.getIdUtilisateur(username);
         
-        DBConnection myDemoDBConn = new DBConnection();      
+        DBConnection myDemoDBConn = new DBConnection();
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = null;
         
-        String query = "update statistique set statistique." + attribut + "=" + nombre + " where idEtudiant=" 
-        + id;
-
+        String query = "update statistique set statistique." + attribut + "=" + nombre + " where idEtudiant="
+                + id;
+        
         try {
             stmt = conn.createStatement();
             stmt.executeUpdate(query);
@@ -164,7 +159,7 @@ public class StatistiqueDAO {
      * @author Enzo
      * @param username le nom du propriétaire des statistiques
      * @return l'objet Statistiques créé, ou null si impossible
-     * @throws SQLException 
+     * @throws SQLException
      */
     public Statistiques newStatistique(String username) throws SQLException {
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
@@ -173,24 +168,24 @@ public class StatistiqueDAO {
         Connection conn = myDemoDBConn.getConnection();
         Statement stmt = conn.createStatement();
         
-        String query ="select * from statistique, Utilisateur where Utilisateur.username=" 
-        + "'" + username +"'";
+        String query ="select * from statistique, Utilisateur where Utilisateur.username="
+                + "'" + username +"'";
         
         try {
             ResultSet res = stmt.executeQuery(query);
             if (res.next()) {
                 int nombreQuestion = res.getInt("nombreQuestion");
-	        int nombreBonnesQuestions =res.getInt("nombreBonnesQuestions");
-	        int nombreQuestionsRepondues = res.getInt("nombreQuestionsRepondues");
-	        float vitesseMoyenne = res.getFloat("vitesseMoyenne");
+                int nombreBonnesQuestions =res.getInt("nombreBonnesQuestions");
+                int nombreQuestionsRepondues = res.getInt("nombreQuestionsRepondues");
+                float vitesseMoyenne = res.getFloat("vitesseMoyenne");
                 int meilleureSerieBonnesReponses =res.getInt("meilleureSerieBonnesReponses");
                 int meilleurClassement =res.getInt("meilleurClassement");
                 int meilleurNombreDePointsSemaine =res.getInt("meilleurNombreDePointsSemaine");
                 int nombreDeFoisGagnant =res.getInt("nombreDeFoisGagnant");
                 float tempsReponse =0;
-
                 
-                return new Statistiques(nombreQuestion, nombreBonnesQuestions, nombreQuestionsRepondues, 
+                
+                return new Statistiques(nombreQuestion, nombreBonnesQuestions, nombreQuestionsRepondues,
                         vitesseMoyenne, meilleureSerieBonnesReponses, meilleurClassement, meilleurNombreDePointsSemaine, nombreDeFoisGagnant, tempsReponse);
             }
         } catch (SQLException e) {

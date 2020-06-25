@@ -1,13 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.modererMessage;
 
 import PTS2.DataBase.MessageDuJourDAO;
-import PTS2.anonyme.FXMLAnonymeController;
-import PTS2.professeur.FXMLProfesseurController;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -21,7 +14,7 @@ import javafx.scene.control.TextArea;
 
 /**
  * <h1> Controller Modérer un message</h1>
- * 
+ *
  * FXML controller, permettant de modifier le message de la semaine
  * dans la base de données.
  *
@@ -29,7 +22,6 @@ import javafx.scene.control.TextArea;
  */
 
 public class FXMLModererMessageController implements Initializable {
-
     
     @FXML
     private Label messageDuJour;
@@ -37,11 +29,6 @@ public class FXMLModererMessageController implements Initializable {
     private TextArea taModerer;
     @FXML
     private Button btnSauvegarder;
-    
-    
-    
-    
-
     
     
     /**
@@ -54,7 +41,7 @@ public class FXMLModererMessageController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXMLModererMessageController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    }
     
     public void sauvegarderMessage() throws SQLException
     {

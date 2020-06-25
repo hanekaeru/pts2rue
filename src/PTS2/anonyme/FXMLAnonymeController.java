@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.anonyme;
 
 import PTS2.DataBase.MessageDuJourDAO;
@@ -15,7 +10,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.MonthDay;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,7 +23,6 @@ import javafx.scene.control.DateCell;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.control.Tooltip;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Font;
@@ -41,19 +34,19 @@ import javafx.stage.Window;
 import javafx.util.Callback;
 
 /**
- *<h1> FXML Controller Anonyme</h1>
+ * <h1>FXML Controller Anonyme</h1>
  * Controller qui va gérer l'interface de connexion anonyme.
  * @author maxim
  */
 public class FXMLAnonymeController implements Initializable {
-
+    
     @FXML
     private AnchorPane conteneurCalendrier;
     @FXML
     private Window sPrimaryStage;
     @FXML
     private Label messageDuJour;
-
+    
     
     public static Question question;
     
@@ -93,13 +86,13 @@ public class FXMLAnonymeController implements Initializable {
         leController = leLoader.getController();
         fenetreSecondaire.showAndWait() ;
     }
-        
     
-        /**
+    
+    /**
      * <h2>Init Calendrier</h2>
      * Méthode implementant la calendrier des questions, une question par jour.
      * @author antonin
-     * 
+     *
      */
     public void initCalendrier(){
         DatePicker dateTest = new DatePicker();
@@ -144,7 +137,7 @@ public class FXMLAnonymeController implements Initializable {
             }
         };
         dateTest.setDayCellFactory(dayCellFactory);
-
+        
         DatePickerSkin datePickerSkin = new DatePickerSkin(dateTest);
         //datePickerSkin.computeMaxWidth​(double height, double topInset, double rightInset, double bottomInset, double leftInset);
         //datePickerSkin.setMaxWidth(150);
@@ -167,6 +160,6 @@ public class FXMLAnonymeController implements Initializable {
         }
         
         initCalendrier();
-    }    
+    }
     
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.gestionquestion;
 
 import PTS2.DataBase.QuestionDAO;
@@ -29,7 +24,7 @@ import javafx.scene.control.ToggleGroup;
 
 /**
  * <h1> Controller Ajouter une Question</h1>
- * 
+ *
  * FXML controller, permettant d'ajouter une nouvelle question
  * dans la base de données.
  *
@@ -46,10 +41,10 @@ public class FXMLAjouterQuestionController implements Initializable {
     
     @FXML
     private TextField reponse2;
-        
+    
     @FXML
     private TextField reponse3;
-
+    
     @FXML
     private TextField reponse4;
     
@@ -82,11 +77,11 @@ public class FXMLAjouterQuestionController implements Initializable {
         this.matiere.setItems(FXCollections.observableArrayList(Matiere.values()));
         this.ue.setItems(FXCollections.observableArrayList(UE.values()));
         
-        this.toogleGroupAnnee = new ToggleGroup();       
+        this.toogleGroupAnnee = new ToggleGroup();
         this.radioButton1.setToggleGroup(toogleGroupAnnee);
         this.radioButton2.setToggleGroup(toogleGroupAnnee);
-    }    
-   
+    }
+    
     public void sauvegarderQuestion() throws SQLException{
         UtilisateurDAO utilisateurDAO = new UtilisateurDAO();
         ArrayList<String> list = new ArrayList<>();
@@ -103,15 +98,15 @@ public class FXMLAjouterQuestionController implements Initializable {
         }
         Professeur professeur=null;
         professeur = utilisateurDAO.newProfesseur(Utilisateur.username,utilisateurDAO.getPassword(Utilisateur.username));
-
+        
         Question question = new Question((Matiere) matiere.getValue(),  niveau,
                 dateQuestion.getValue(), questionArea.getText(), bonneReponse.getText(), list, (UE)ue.getValue(), professeur);
         
         QuestionDAO questionDAO = new QuestionDAO();
         questionDAO.addQuestion(question);
-     
+        
     }
-     
+    
     public void importerImage(){
         
     }

@@ -1,25 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.question;
 
-
-import PTS2.DataBase.MessageDuJourDAO;
-import PTS2.DataBase.QuestionDAO;
-import PTS2.anonyme.FXMLAnonymeController;
 import PTS2.modele.Question;
-import PTS2.modele.Statistiques;
 import PTS2.principal.FXMLPrincipalController;
 import java.net.URL;
-import java.sql.SQLException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -28,7 +13,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
-
 
 
 
@@ -49,7 +33,7 @@ public class FXMLQuestionController implements Initializable {
     private RadioButton rbRep3;
     @FXML
     private RadioButton rbRep4;
-
+    
     
     private Question question;
     
@@ -58,7 +42,7 @@ public class FXMLQuestionController implements Initializable {
     
     @FXML
     private Button btnQuitter;
-
+    
     public FXMLQuestionController() {
         
     }
@@ -70,7 +54,7 @@ public class FXMLQuestionController implements Initializable {
     private void handleButtonAction(ActionEvent event) {
 //        System.out.println("You clicked me!");
 //        label.setText("Hello World!");
-    }    
+    }
     
     public void valider(){
         Stage fenetre = (Stage)btnQuitter.getScene().getWindow();
@@ -84,8 +68,8 @@ public class FXMLQuestionController implements Initializable {
         alert.setHeaderText("La réponse était : ");
         alert.setContentText("\n" + FXMLPrincipalController.question.getBonneReponse().replace("&#&", ", "));
         alert.showAndWait();
-        
-        
+
+
         fenetre.close();
     }
     
@@ -108,10 +92,10 @@ public class FXMLQuestionController implements Initializable {
 
 
         if (FXMLPrincipalController.question.getReponses().size() > 2)
-        {           
+        {
             this.rbRep3.setText(FXMLPrincipalController.question.getReponses().get(2));
-            this.rbRep4.setText(FXMLPrincipalController.question.getReponses().get(3)); 
+            this.rbRep4.setText(FXMLPrincipalController.question.getReponses().get(3));
         }
-        
+
     }
 }

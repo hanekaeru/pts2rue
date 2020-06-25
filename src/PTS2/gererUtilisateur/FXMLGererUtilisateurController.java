@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.gererUtilisateur;
 
-import PTS2.stats.FXMLStatsController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,7 +17,7 @@ import javafx.stage.Window;
 
 /**
  * <h1> Controller Gerer un Utilisateur</h1>
- * 
+ *
  * FXML controller, permettant d'acceder à la gestion d'utilisateur
  * dans la base de données.
  *
@@ -32,35 +26,35 @@ import javafx.stage.Window;
 
 public class FXMLGererUtilisateurController implements Initializable {
     
- 
-
+    
+    
     @FXML
     private Button btnQuitter;
-        @FXML
+    @FXML
     private ImageView btnAddUser;
-            @FXML
-    private ImageView btnSupprUser;   
-            @FXML
+    @FXML
+    private ImageView btnSupprUser;
+    @FXML
     private ImageView btnModifUser;
     
     private Window sPrimaryStage;
     
-
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
     
-     public void quitter(){
+    public void quitter(){
         Stage fenetre = (Stage)btnQuitter.getScene().getWindow();
         fenetre.close();
     }
     
     
-     public void accederAjouterUtilisateur() throws IOException{
+    public void accederAjouterUtilisateur() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/PTS2/gererUtilisateur/FXMLAjouterUtilisateur.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load();
         Stage fenetreSecondaire= new Stage() ;
@@ -81,9 +75,9 @@ public class FXMLGererUtilisateurController implements Initializable {
         leController = leLoader.getController();
         fenetreSecondaire.showAndWait() ;
     }
-
     
- public void accederModifierUtilisateur() throws IOException{
+    
+    public void accederModifierUtilisateur() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/PTS2/gererUtilisateur/FXMLModifierUtilisateur.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load();
         Stage fenetreSecondaire= new Stage() ;
@@ -133,6 +127,6 @@ public class FXMLGererUtilisateurController implements Initializable {
         fenetreSecondaire.showAndWait() ;
     }
     
-
+    
     
 }

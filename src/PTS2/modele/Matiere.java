@@ -1,12 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.modele;
 
 /**
- *<h1>Classe Matiere</h1>
+ * <h1>Classe Matiere</h1>
  * Switch case regroupant toutes les matières et leur abréviation.
  * @author maxime
  */
@@ -35,23 +30,23 @@ public enum Matiere {
     Matiere(String matiere) {
         this.matiere=matiere;
     }
-
+    
     public String getMatiere() {
         return matiere;
     }
-
+    
     public UE getUe() {
         return ue;
     }
-
+    
     public Niveau getNiveau() {
         return niveau;
     }
-
+    
     public void setUe(UE ue) {
         this.ue = ue;
     }
-
+    
     public void setNiveau(Niveau niveau) {
         this.niveau = niveau;
     }
@@ -78,7 +73,7 @@ public enum Matiere {
             case "AP":
                 return Matiere.Projet;
             case "TC":
-                return Matiere.M311;         
+                return Matiere.M311;
             case "ORC":
                 return Matiere.M312;
             case "DAP":
@@ -90,7 +85,7 @@ public enum Matiere {
             case "MEP":
                 return Matiere.M421;
             case "APS":
-                return Matiere.Stage;                
+                return Matiere.Stage;
             default:
                 return null;
         }

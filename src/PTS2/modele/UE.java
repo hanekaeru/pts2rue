@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.modele;
 
 /**
@@ -27,7 +22,7 @@ public enum UE {
     UE(String module) {
         this.module=module;
     }
-
+    
     public String getModule() {
         return this.module;
     }
@@ -56,7 +51,7 @@ public enum UE {
             case "42":
                 return UE42;
             case "43":
-                return UE43;              
+                return UE43;
             default:
                 return null;
         }

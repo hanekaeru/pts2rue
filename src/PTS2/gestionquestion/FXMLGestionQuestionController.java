@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package PTS2.gestionquestion;
 
-import PTS2.stats.FXMLStatsController;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,7 +16,7 @@ import javafx.stage.Window;
 
 /**
  * <h1> Controller Gerer une Question</h1>
- * 
+ *
  * FXML controller, permettant d'acceder à la gestion d'une question
  * dans la base de données.
  *
@@ -30,7 +24,7 @@ import javafx.stage.Window;
  */
 
 public class FXMLGestionQuestionController implements Initializable {
-
+    
     @FXML
     private Window sPrimaryStage;
     
@@ -132,6 +126,6 @@ public class FXMLGestionQuestionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
+    }
     
 }
