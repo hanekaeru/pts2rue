@@ -5,7 +5,6 @@ import fr.iut.larochelle.principal.FXMLPrincipalController;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
@@ -15,13 +14,12 @@ import javafx.scene.control.RadioButton;
 import javafx.stage.Stage;
 
 
-
 /**
  *
  * @author Antonin
  */
 public class FXMLQuestionController implements Initializable {
-    public Chrono chrono=new Chrono();
+    public Chrono chrono = new Chrono();
     private LocalDate date;
     
     
@@ -46,14 +44,13 @@ public class FXMLQuestionController implements Initializable {
     public FXMLQuestionController() {
         
     }
+    
     public FXMLQuestionController(Question question) {
         this.question = question;
     }
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-//        System.out.println("You clicked me!");
-//        label.setText("Hello World!");
+    public void setQuestion(Question question) {
+        this.question = question;
     }
     
     public void valider(){
@@ -84,15 +81,19 @@ public class FXMLQuestionController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         chrono.start();
+        
+        if (question == null) {
+            System.out.println("\n\nALED C4EST NUL !!\n\n");
+        }
+        
         this.labelQuestion.setText(FXMLPrincipalController.question.getQuestion());
+
 //        ArrayList<String> reponses = FXMLPrincipalController.question.getReponses();
+
         this.rbRep1.setText(FXMLPrincipalController.question.getReponses().get(0));
         this.rbRep2.setText(FXMLPrincipalController.question.getReponses().get(1));
 
-
-
-        if (FXMLPrincipalController.question.getReponses().size() > 2)
-        {
+        if (FXMLPrincipalController.question.getReponses().size() > 2) {
             this.rbRep3.setText(FXMLPrincipalController.question.getReponses().get(2));
             this.rbRep4.setText(FXMLPrincipalController.question.getReponses().get(3));
         }

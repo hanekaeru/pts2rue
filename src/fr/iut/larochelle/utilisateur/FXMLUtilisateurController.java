@@ -2,7 +2,6 @@ package fr.iut.larochelle.utilisateur;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -11,7 +10,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 /**
- *<h1>Controller Utilisateur</h1>
+ * <h1>Controller Utilisateur</h1>
  * controller qui gère l'interface utilisateur.
  * @author maxime
  */
@@ -22,22 +21,16 @@ public class FXMLUtilisateurController implements Initializable {
     
     private Window sPrimaryStage;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-//        System.out.println("You clicked me!");
-//        label.setText("Hello World!");
-    }
-    
 //
 //    public void creerFenetre() throws IOException{
 //        FXMLLoader leLoader = new FXMLLoader (getClass().getResource("../fenetre/FXMLFenetre.fxml") ) ;
 //        ? SplitPane laPage = (SplitPane) leLoader.load() ;
 //        Stage fenetreSecondaire= new Stage() ;
-//        fenetreSecondaire. setTitle("NomFenetre") ;
+//        fenetreSecondaire.setTitle("NomFenetre") ;
 //        fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
 //        fenetreSecondaire.initOwner(this.sPrimaryStage);
 //        Scene laScene = new Scene(laPage);
-//        fenetreSecondaire. setScene( laScene);
+//        fenetreSecondaire.setScene( laScene);
 //
 //        FXMLPrincipalController leController;
 //

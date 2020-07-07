@@ -32,8 +32,7 @@ public class FXMLGestionQuestionController implements Initializable {
     private Button btnQuitter;
     /**
      * Initializes the controller class.
-     */
-    
+     */    
     public void quitter(){
         Stage fenetre = (Stage)btnQuitter.getScene().getWindow();
         fenetre.close();
@@ -55,7 +54,7 @@ public class FXMLGestionQuestionController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Ajouter une Question") ;
+        fenetreSecondaire.setTitle("Ajouter une Question") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -83,7 +82,7 @@ public class FXMLGestionQuestionController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Modifier une Question") ;
+        fenetreSecondaire.setTitle("Modifier une Question") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -111,7 +110,7 @@ public class FXMLGestionQuestionController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Supprimer une Question") ;
+        fenetreSecondaire.setTitle("Supprimer une Question") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);

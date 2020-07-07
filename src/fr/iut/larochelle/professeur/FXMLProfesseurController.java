@@ -17,7 +17,6 @@ import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -67,13 +66,6 @@ public class FXMLProfesseurController implements Initializable {
     public Label messageDuJour;
     
     
-    
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-//        System.out.println("You clicked me!");
-//        label.setText("Hello World!");
-    }
-    
     public FXMLProfesseurController(){
         //this.btnTest.setGraphic(this.btnStats); inutile
     }
@@ -88,7 +80,7 @@ public class FXMLProfesseurController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Édition des questions") ;
+        fenetreSecondaire.setTitle("Édition des questions") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -122,7 +114,7 @@ public class FXMLProfesseurController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Édition des questions") ;
+        fenetreSecondaire.setTitle("Édition des questions") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -134,12 +126,12 @@ public class FXMLProfesseurController implements Initializable {
         fenetreSecondaire.showAndWait() ;
     }
     
-    /**<h2>Acceder gerer Utilisateur</h2>
+    /**
+     * <h2>Acceder gerer Utilisateur</h2>
      * Methode permettant d'acceder a l'interface de gestion des utilisateurs (admin).
      * @maxim
      * @throws IOException
-     */
-    
+     */    
     public void accederGererUtilisateur() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gererUtilisateur/FXMLGererUtilisateur.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
@@ -150,7 +142,7 @@ public class FXMLProfesseurController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Gestion Utilisateur") ;
+        fenetreSecondaire.setTitle("Gestion Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -167,8 +159,7 @@ public class FXMLProfesseurController implements Initializable {
      * Ouvre la fenetre permettant d'editer un evenement.
      * @author antonin
      * @throws IOException
-     */
-    
+     */    
     public void ouvrirEditionEvenement() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gererEvenement/FXMLGestioneEvenement.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
@@ -179,7 +170,7 @@ public class FXMLProfesseurController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Question du *date*") ;
+        fenetreSecondaire.setTitle("Question du *date*") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -197,8 +188,7 @@ public class FXMLProfesseurController implements Initializable {
      * Ouvre la fenetre du calendrier.
      * @author antonin
      * @throws IOException
-     */
-    
+     */    
     public void ouvrirFenetreCalendrier() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("") ) ;
         AnchorPane laPage = (AnchorPane)leLoader.load() ;
@@ -209,7 +199,7 @@ public class FXMLProfesseurController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Configuration") ;
+        fenetreSecondaire.setTitle("Configuration") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -227,8 +217,7 @@ public class FXMLProfesseurController implements Initializable {
      * Ouvre la fenetre permettant de moderer le message de la semaine.
      * @author antonin
      * @throws IOException
-     */
-    
+     */    
     public void ouvrirFenetreModeration() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/modererMessage/FXMLModererMessage.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
@@ -239,7 +228,7 @@ public class FXMLProfesseurController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Utilisateur") ;
+        fenetreSecondaire.setTitle("Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -255,7 +244,6 @@ public class FXMLProfesseurController implements Initializable {
      * <h2>Init Calendrier</h2>
      * Méthode implementant la calendrier des questions.
      * @author antonin
-     *
      */
     public void initCalendrier(){
         DatePicker dateTest = new DatePicker();

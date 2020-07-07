@@ -64,7 +64,7 @@ public class FXMLGererUtilisateurController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Ajouter un Utilisateur") ;
+        fenetreSecondaire.setTitle("Ajouter un Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -87,7 +87,7 @@ public class FXMLGererUtilisateurController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Modifier un Utilisateur") ;
+        fenetreSecondaire.setTitle("Modifier un Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -115,7 +115,7 @@ public class FXMLGererUtilisateurController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Supprimer un Utilisateur") ;
+        fenetreSecondaire.setTitle("Supprimer un Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);

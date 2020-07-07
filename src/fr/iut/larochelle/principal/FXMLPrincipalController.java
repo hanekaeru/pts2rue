@@ -9,12 +9,16 @@ import fr.iut.larochelle.configuration.FXMLConfigurationController;
 import fr.iut.larochelle.connexion.FXMLConnexionController;
 import fr.iut.larochelle.modele.Question;
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
+import fr.iut.larochelle.modele.Matiere;
+import fr.iut.larochelle.modele.Niveau;
+import fr.iut.larochelle.modele.UE;
 
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.MonthDay;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -46,7 +50,6 @@ import javafx.util.Callback;
  * <h1>Controller Principale</h1>.
  * Controller gérant l'interface principal.
  * @author antonin, maxime, kyllian
- *
  */
 public class FXMLPrincipalController implements Initializable {
     
@@ -90,7 +93,7 @@ public class FXMLPrincipalController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Statistiques") ;
+        fenetreSecondaire.setTitle("Statistiques") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -122,9 +125,30 @@ public class FXMLPrincipalController implements Initializable {
             Logger.getLogger(FXMLQuestionController.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/question/FXMLQuestion.fxml") ) ;
+        FXMLLoader leLoader = new FXMLLoader(getClass().getResource("/fr/iut/larochelle/question/FXMLQuestion.fxml"));
+        
+        
+        
+//        ArrayList<String> reponses = new ArrayList<>();
+//        reponses.add("La bonne reponse");
+//        reponses.add("La mauvaise reponse");
+//        FXMLQuestionController leController = new FXMLQuestionController(
+//                new Question(Matiere.M111, Niveau.PREMIERE_ANNEE, LocalDate.now(), "La question", "La bonne reponse", reponses, UE.UE11));
+//        leController = leLoader.getController();
+//        leLoader.setController(leController);
+//        
+//        OU :
+//        
+//        FXMLQuestionController leController = leLoader.getController();
+//        leController.setQuestion(
+//                new Question(Matiere.M111, Niveau.PREMIERE_ANNEE, LocalDate.now(), "La question", "La bonne reponse", reponses, UE.UE11)
+//        );
+        
+        
+
+
         SplitPane laPage = (SplitPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage() ;
         
         StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
         fenetreSecondaire.initStyle(stageStyle);
@@ -138,8 +162,8 @@ public class FXMLPrincipalController implements Initializable {
         fenetreSecondaire.setScene( laScene);
         
         FXMLQuestionController leController = new FXMLQuestionController();        //Création du Controller associé à la fenêtre secondaire
-        
         leController = leLoader.getController();
+        
         fenetreSecondaire.showAndWait() ;
     }
     
@@ -159,7 +183,7 @@ public class FXMLPrincipalController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Configuration") ;
+        fenetreSecondaire.setTitle("Configuration") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -186,7 +210,7 @@ public class FXMLPrincipalController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Utilisateur") ;
+        fenetreSecondaire.setTitle("Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -220,11 +244,11 @@ public class FXMLPrincipalController implements Initializable {
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("") ;
+        fenetreSecondaire.setTitle("") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire. setScene( laScene);
+        fenetreSecondaire.setScene( laScene);
         
         FXMLConnexionController leController;
         
@@ -239,7 +263,6 @@ public class FXMLPrincipalController implements Initializable {
      * <h2>Init Calendrier</h2>
      * Méthode implementant la calendrier des questions.
      * @author antonin
-     *
      */
     public void initCalendrier(){
         DatePicker dateTest = new DatePicker();
@@ -255,7 +278,14 @@ public class FXMLPrincipalController implements Initializable {
                         super.updateItem(item, empty);
                         
                         
+                        if (item.equals(LocalDate.now())) {
+                            setFont(Font.font("System", FontWeight.EXTRA_BOLD, 12));
+                        }
                         
+                        /*
+                            Simulations de réponses données au mois de juin
+                            (propre aux étudiants authentifiés)
+                        */
                         if (MonthDay.from(item).equals(MonthDay.of(6, 9)))
                         {
                             setTooltip(new Tooltip("Affichage de l'évenement du jour ou de la question."));
@@ -317,10 +347,6 @@ public class FXMLPrincipalController implements Initializable {
                             setStyle("-fx-background-color: #22ff44;");
                         }
                         
-                        if (item.equals(LocalDate.now())) {
-                            setFont(Font.font("System", FontWeight.EXTRA_BOLD, 12));
-                        }
-                        
                         if (item.isBefore(LocalDate.now().plusDays(1))) {
                             setOnMouseClicked(new EventHandler<MouseEvent>() {
                                 @Override
@@ -358,7 +384,7 @@ public class FXMLPrincipalController implements Initializable {
         dateTest.setDayCellFactory(dayCellFactory);
         
         DatePickerSkin datePickerSkin = new DatePickerSkin(dateTest);
-        //datePickerSkin.computeMaxWidth​(double height, double topInset, double rightInset, double bottomInset, double leftInset);
+        //datePickerSkin.computeMaxWidth(double height, double topInset, double rightInset, double bottomInset, double leftInset);
         //datePickerSkin.setMaxWidth(150);
         Node popupContent = datePickerSkin.getPopupContent();
         //popupContent.autosize();

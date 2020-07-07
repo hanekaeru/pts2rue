@@ -68,14 +68,14 @@ public class FXMLAnonymeController implements Initializable {
         }
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/question/FXMLQuestion.fxml") ) ;
         SplitPane laPage = (SplitPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage() ;
         
         StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
         fenetreSecondaire.initStyle(stageStyle);
         
         fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
         
-        fenetreSecondaire. setTitle("Question du " + item.toString()) ;
+        fenetreSecondaire.setTitle("Question du " + item.toString()) ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
@@ -90,9 +90,8 @@ public class FXMLAnonymeController implements Initializable {
     
     /**
      * <h2>Init Calendrier</h2>
-     * Méthode implementant la calendrier des questions, une question par jour.
+     * Méthode implementant le calendrier des questions, une question par jour.
      * @author antonin
-     *
      */
     public void initCalendrier(){
         DatePicker dateTest = new DatePicker();
