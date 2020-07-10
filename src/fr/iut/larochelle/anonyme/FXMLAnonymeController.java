@@ -6,6 +6,7 @@ import fr.iut.larochelle.modele.Question;
 import fr.iut.larochelle.principal.FXMLPrincipalController;
 import fr.iut.larochelle.question.FXMLQuestionController;
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
+import fr.iut.larochelle.util.ErrorManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -36,7 +37,8 @@ import javafx.util.Callback;
 /**
  * <h1>FXML Controller Anonyme</h1>
  * Controller qui va gérer l'interface de connexion anonyme.
- * @author maxim
+ * 
+ * @author maxime
  */
 public class FXMLAnonymeController implements Initializable {
     
@@ -52,8 +54,11 @@ public class FXMLAnonymeController implements Initializable {
     
     /**
      * <h2>Ouvrir la fenetre de question de l'interface Anonyme.</h2>
+     * 
      * @author antonin, maxime
+     * @param item
      * @throws java.io.IOException
+     * @throws java.sql.SQLException
      */
     public void ouvrirFenetreQuestion(LocalDate item) throws IOException, SQLException{
         FXMLAnonymeController.question = null;
@@ -66,33 +71,32 @@ public class FXMLAnonymeController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXMLQuestionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+                
+        if (question == null) {
+            ErrorManager.displayNoQuestionFound(item);
+            return;
+        }
+        
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/question/FXMLQuestion.fxml") ) ;
         SplitPane laPage = (SplitPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
-        
-        fenetreSecondaire. setTitle("Question du " + item.toString()) ;
+        fenetreSecondaire.setTitle("Question du " + item.toString()) ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLQuestionController leController = new FXMLQuestionController();        //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     
     /**
      * <h2>Init Calendrier</h2>
-     * Méthode implementant la calendrier des questions, une question par jour.
+     * Méthode implementant le calendrier des questions, une question par jour.
      * @author antonin
-     *
      */
     public void initCalendrier(){
         DatePicker dateTest = new DatePicker();
@@ -118,9 +122,7 @@ public class FXMLAnonymeController implements Initializable {
                                 public void handle(MouseEvent event) {
                                     try {
                                         ouvrirFenetreQuestion(item);
-                                    } catch (IOException ex) {
-                                        Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                                    } catch (SQLException ex) {
+                                    } catch (IOException | SQLException ex) {
                                         Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                                     }
                                 }

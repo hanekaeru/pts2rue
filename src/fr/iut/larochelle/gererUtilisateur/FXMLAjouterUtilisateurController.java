@@ -24,7 +24,7 @@ import javafx.scene.control.TextField;
  * FXML controller, permettant d'ajouter un nouvel utilisateur
  * dans la base de données.
  *
- * @author maxim
+ * @author maxime
  */
 public class FXMLAjouterUtilisateurController implements Initializable {
     
@@ -51,9 +51,7 @@ public class FXMLAjouterUtilisateurController implements Initializable {
     
     @FXML
     private RadioButton prof;
-    /**
-     * Initializes the controller class.
-     */
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.niveau.setItems(FXCollections.observableArrayList(Niveau.values()));

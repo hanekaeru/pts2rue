@@ -2,13 +2,11 @@ package fr.iut.larochelle.configuration;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;  //Label à rajouter pour les erreurs de mot de passe
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -19,8 +17,8 @@ import javafx.stage.Window;
 /**
  * <h1>Controller de l'interface de Configuration</h1>.
  * Controller gérant l'interface de configuration utilisateur.
+ * 
  * @author antonin
- *
  */
 public class FXMLConfigurationController implements Initializable {
     
@@ -35,19 +33,11 @@ public class FXMLConfigurationController implements Initializable {
     
     private Window sPrimaryStage;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-//        System.out.println("You clicked me!");
-//        label.setText("Hello World!");
-    }
-    
     /**
      * <h2>Changer de mot de passe</h2>.
      * Méthode pour changer le mdp utilisateur.
      * @author antonin
-     *
-     */
-    
+     */    
     public void changerMotDePasse(){
         System.out.println("Méthode pour changer le mdp.");
     }
@@ -56,7 +46,6 @@ public class FXMLConfigurationController implements Initializable {
      * <h2>Quitter la fenetre</h2>.
      * Quitter la fenetre actuelle.
      * @author antonin
-     *
      */
     public void quitter(){
         Stage fenetre = (Stage)btnQuitter.getScene().getWindow(); //@FXML    private Button detailsButton;

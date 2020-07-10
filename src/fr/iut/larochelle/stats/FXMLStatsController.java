@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -47,14 +46,8 @@ public class FXMLStatsController implements Initializable {
     @FXML
     private Label bestclass;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-//        System.out.println("You clicked me!");
-//        label.setText("Hello World!");
-    }
-    
-    @FXML
     /*
+    @FXML
     public void recupererStats(Etudiant etudiant)
     {
         label.setText(etudiant.stats.getStats());

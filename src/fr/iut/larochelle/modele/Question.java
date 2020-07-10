@@ -19,7 +19,8 @@ public class Question {
     private UE ue;
     private Professeur professeur;
     
-    public Question(Matiere matiere, Niveau niveau, LocalDate datePubliee, String question, String bonneReponse, ArrayList<String> reponses, UE ue, Professeur professeur) {
+    public Question(Matiere matiere, Niveau niveau, LocalDate datePubliee,
+            String question, String bonneReponse, ArrayList<String> reponses, UE ue) {
         this.matiere = matiere;
         this.niveau = niveau;
         this.datePubliee = datePubliee;
@@ -27,22 +28,15 @@ public class Question {
         this.bonneReponse = bonneReponse;
         this.reponses = reponses;
         this.ue = ue;
+        this.image = " ";
+    }
+    
+    
+    public Question(Matiere matiere, Niveau niveau, LocalDate datePubliee, String question,
+            String bonneReponse, ArrayList<String> reponses, UE ue, Professeur professeur) {
+        this(matiere, niveau, datePubliee, question, bonneReponse, reponses, ue);
         this.professeur = professeur;
-        this.image = " ";
     }
-    
-    public Question(Matiere matiere, Niveau niveau, LocalDate datePubliee, String question, String bonneReponse, ArrayList<String> reponses, UE ue) {
-        this.matiere = matiere;
-        this.niveau = niveau;
-        this.datePubliee = datePubliee;
-        this.question = question;
-        this.bonneReponse = bonneReponse;
-        this.reponses = reponses;
-        this.ue = ue;
-        this.image = " ";
-    }
-    
-    
     
     
     public void setImage(String image)

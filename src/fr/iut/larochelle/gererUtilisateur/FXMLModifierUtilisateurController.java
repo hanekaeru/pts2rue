@@ -14,13 +14,9 @@ import javafx.scene.control.ComboBox;
  * FXML controller, permettant de modifier un utilisateur
  * dans la base de données.
  *
- * @author maxim
+ * @author maxime
  */
 public class FXMLModifierUtilisateurController implements Initializable {
-    
-    /**
-     * Initializes the controller class.
-     */
     
     @FXML
     private ComboBox cbNiveau;

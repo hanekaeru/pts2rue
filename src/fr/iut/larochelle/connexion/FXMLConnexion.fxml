@@ -21,6 +21,19 @@
             <Image url="@../assets/Revitech.png" />
          </image>
       </ImageView>
+      <VBox layoutX="117.0" layoutY="142.0" prefHeight="117.0" prefWidth="166.0">
+         <children>
+            <Label prefHeight="17.0" prefWidth="125.0" text="Nom d'utilisateur :" />
+            <TextField fx:id="tfUtilisateur" />
+            <Separator prefWidth="200.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Separator>
+            <Label prefHeight="17.0" prefWidth="117.0" text="Mot de passe :" />
+            <PasswordField fx:id="pfMotDePasse" />
+         </children>
+      </VBox>
       <VBox alignment="CENTER" layoutX="100.0" layoutY="259.0" prefHeight="70.0" prefWidth="200.0">
          <children>
             <Button fx:id="btnConnexion" mnemonicParsing="false" onAction="#seConnecter" text="Connexion" textAlignment="CENTER">
@@ -36,19 +49,6 @@
                   <Insets bottom="5.0" top="5.0" />
                </VBox.margin>
             </Button>
-         </children>
-      </VBox>
-      <VBox layoutX="117.0" layoutY="142.0" prefHeight="117.0" prefWidth="166.0">
-         <children>
-            <Label prefHeight="17.0" prefWidth="125.0" text="Nom d'utilisateur :" />
-            <TextField fx:id="tfUtilisateur" />
-            <Separator prefWidth="200.0">
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </Separator>
-            <Label prefHeight="17.0" prefWidth="117.0" text="Mot de passe :" />
-            <PasswordField fx:id="pfMotDePasse" />
          </children>
       </VBox>
       <Label fx:id="msgErreur" alignment="CENTER" contentDisplay="CENTER" layoutX="200.0" layoutY="347.0" prefHeight="23.0" prefWidth="200.0" text="Emplacement erreurs d'identification" textAlignment="CENTER" textFill="RED" />

@@ -18,9 +18,8 @@ import javafx.scene.control.TextArea;
  * FXML controller, permettant de modifier le message de la semaine
  * dans la base de données.
  *
- * @author maxim
+ * @author maxime
  */
-
 public class FXMLModererMessageController implements Initializable {
     
     @FXML
@@ -31,9 +30,6 @@ public class FXMLModererMessageController implements Initializable {
     private Button btnSauvegarder;
     
     
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {

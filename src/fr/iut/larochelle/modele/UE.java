@@ -4,7 +4,6 @@ package fr.iut.larochelle.modele;
  *
  * @author yoann
  */
-
 public enum UE {
     UE11 ("11"),
     UE12 ("12"),

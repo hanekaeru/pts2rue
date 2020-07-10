@@ -11,3 +11,26 @@ Pour le projet tutoré du semestre 2, nous avons été sollicités par un profes
 ## Contenu du GitHub :
 - Code source
 - Documentation sur le code (`/docs`)
+
+## Utilisation de l'application
+
+Au lancement, une fenêtre de connexion s'affiche. Par défaut, la base de donnée contient déjà quelques utilisateurs.
+
+Vous pouvez ainsi vous authentifier avec les `login:mdp` suivants :
+
+#### Rôle 'Administrateur'
+
+`admin:admin`
+
+#### Rôle 'Professeur'
+
+- `prof:prof`, module : 'EEJ'
+- `prof2:prof2`, module : 'ANG'
+- `prof3:prof3`, module : 'DRT'
+
+#### Rôle 'Etudiant'
+
+- `pts:pts`, élève de _???_ année
+- `etud:etud`, élève de première année
+
+Vous pouvez également vous identifier en tant qu'utilisateur anonyme (accès sans mot de passe mais sans suivi personnel).
