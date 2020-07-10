@@ -6,6 +6,7 @@ import fr.iut.larochelle.modele.Question;
 import fr.iut.larochelle.principal.FXMLPrincipalController;
 import fr.iut.larochelle.question.FXMLQuestionController;
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
+import fr.iut.larochelle.util.ErrorManager;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -36,6 +37,7 @@ import javafx.util.Callback;
 /**
  * <h1>FXML Controller Anonyme</h1>
  * Controller qui va gérer l'interface de connexion anonyme.
+ * 
  * @author maxim
  */
 public class FXMLAnonymeController implements Initializable {
@@ -52,8 +54,11 @@ public class FXMLAnonymeController implements Initializable {
     
     /**
      * <h2>Ouvrir la fenetre de question de l'interface Anonyme.</h2>
+     * 
      * @author antonin, maxime
+     * @param item
      * @throws java.io.IOException
+     * @throws java.sql.SQLException
      */
     public void ouvrirFenetreQuestion(LocalDate item) throws IOException, SQLException{
         FXMLAnonymeController.question = null;
@@ -66,6 +71,12 @@ public class FXMLAnonymeController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXMLQuestionController.class.getName()).log(Level.SEVERE, null, ex);
         }
+                
+        if (question == null) {
+            ErrorManager.displayNoQuestionFound(item);
+            return;
+        }
+        
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/question/FXMLQuestion.fxml") ) ;
         SplitPane laPage = (SplitPane) leLoader.load() ;
         Stage fenetreSecondaire = new Stage() ;
@@ -117,9 +128,7 @@ public class FXMLAnonymeController implements Initializable {
                                 public void handle(MouseEvent event) {
                                     try {
                                         ouvrirFenetreQuestion(item);
-                                    } catch (IOException ex) {
-                                        Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
-                                    } catch (SQLException ex) {
+                                    } catch (IOException | SQLException ex) {
                                         Logger.getLogger(FXMLPrincipalController.class.getName()).log(Level.SEVERE, null, ex);
                                     }
                                 }

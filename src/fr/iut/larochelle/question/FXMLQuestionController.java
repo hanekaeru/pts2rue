@@ -2,12 +2,13 @@ package fr.iut.larochelle.question;
 
 import fr.iut.larochelle.modele.Question;
 import fr.iut.larochelle.principal.FXMLPrincipalController;
+import fr.iut.larochelle.util.ErrorManager;
 import java.net.URL;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
@@ -33,6 +34,7 @@ public class FXMLQuestionController implements Initializable {
     private RadioButton rbRep4;
     
     
+    // inutile ici car static dans FXMLPrincipalController..
     private Question question;
     
     @FXML
@@ -53,6 +55,7 @@ public class FXMLQuestionController implements Initializable {
         this.question = question;
     }
     
+    @FXML
     public void valider(){
         Stage fenetre = (Stage)btnQuitter.getScene().getWindow();
         chrono.stop();
@@ -60,16 +63,12 @@ public class FXMLQuestionController implements Initializable {
 //        Statistiques.tempsReponse=chrono.getDureeSec();
 //        System.out.println(Statistiques.tempsReponse);
 
-        Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setTitle("Résultat");
-        alert.setHeaderText("La réponse était : ");
-        alert.setContentText("\n" + FXMLPrincipalController.question.getBonneReponse().replace("&#&", ", "));
-        alert.showAndWait();
-
+        ErrorManager.displayResult(FXMLPrincipalController.question.getBonneReponse());
 
         fenetre.close();
     }
     
+    @FXML
     public void quitter(){
         Stage fenetre = (Stage)btnQuitter.getScene().getWindow();
         chrono.stop();
@@ -82,20 +81,16 @@ public class FXMLQuestionController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         chrono.start();
         
-        if (question == null) {
-            System.out.println("\n\nALED C4EST NUL !!\n\n");
-        }
-        
-        this.labelQuestion.setText(FXMLPrincipalController.question.getQuestion());
+        labelQuestion.setText(FXMLPrincipalController.question.getQuestion());
 
-//        ArrayList<String> reponses = FXMLPrincipalController.question.getReponses();
+        ArrayList<String> reponses = FXMLPrincipalController.question.getReponses();
 
-        this.rbRep1.setText(FXMLPrincipalController.question.getReponses().get(0));
-        this.rbRep2.setText(FXMLPrincipalController.question.getReponses().get(1));
+        rbRep1.setText(reponses.get(0));
+        rbRep2.setText(reponses.get(1));
 
-        if (FXMLPrincipalController.question.getReponses().size() > 2) {
-            this.rbRep3.setText(FXMLPrincipalController.question.getReponses().get(2));
-            this.rbRep4.setText(FXMLPrincipalController.question.getReponses().get(3));
+        if (reponses.size() > 2) {
+            rbRep3.setText(reponses.get(2));
+            rbRep4.setText(reponses.get(3));
         }
 
     }

@@ -24,13 +24,13 @@ Vous pouvez ainsi vous authentifier avec les `login:mdp` suivants :
 
 #### Rôle 'Professeur'
 
-`prof:prof`, module : 'EEJ'
-`prof2:prof2`, module : 'ANG'
-`prof3:prof3`, module : 'DRT'
+- `prof:prof`, module : 'EEJ'
+- `prof2:prof2`, module : 'ANG'
+- `prof3:prof3`, module : 'DRT'
 
 #### Rôle 'Etudiant'
 
-`pts:pts`, élève de _???_ année
-`etud:etud`, élève de première année
+- `pts:pts`, élève de _???_ année
+- `etud:etud`, élève de première année
 
 Vous pouvez également vous identifier en tant qu'utilisateur anonyme (accès sans mot de passe mais sans suivi personnel).

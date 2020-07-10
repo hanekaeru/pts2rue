@@ -10,6 +10,7 @@ import fr.iut.larochelle.modele.Statistiques;
 import fr.iut.larochelle.modele.Utilisateur;
 import fr.iut.larochelle.principal.FXMLPrincipalController;
 import fr.iut.larochelle.professeur.FXMLProfesseurController;
+import fr.iut.larochelle.util.ErrorManager;
 import java.awt.Desktop;
 import java.io.IOException;
 import java.net.URI;
@@ -24,7 +25,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;  //Label à rajouter pour les erreurs de mot de passe
@@ -88,6 +88,7 @@ public class FXMLConnexionController implements Initializable {
      * <h2>Se connecter Anonyme</h2>.
      * Méthode pour se connecter anonymement, sans compte dans la BD.
      * @author antonin
+     * @throws java.io.IOException
      */    
     public void seConnecterAnonyme() throws IOException{
         //todo
@@ -116,7 +117,10 @@ public class FXMLConnexionController implements Initializable {
     /**
      * <h2>Se connecter </h2>.
      * Méthode pour se connecter.
+     * 
      * @author antonin
+     * @throws java.io.IOException
+     * @throws java.sql.SQLException
      */    
     public void seConnecter() throws IOException, SQLException{
         String user = "INCONNU";
@@ -145,12 +149,7 @@ public class FXMLConnexionController implements Initializable {
             case "INCONNU":
                 // Affiche une erreur dans le label prévu à cet effet + propose connexion anonyme.
                 this.msgErreur.setText("Catégorie d'utilisateur non reconnu.");
-                Alert alert = new Alert(Alert.AlertType.WARNING);
-                alert.setTitle("Erreur de connexion");
-                alert.setHeaderText("Identification Interrompue");
-                alert.setContentText("Erreur d'identification, veuillez réessayer."
-                        + "\nVous pouvez également vous connecter sans mot de passe avec la connexion anonyme.");
-                alert.showAndWait();
+                ErrorManager.unknownUserWarner();
                 break;
             default:
                 break;
@@ -161,6 +160,7 @@ public class FXMLConnexionController implements Initializable {
     /**
      * <h2>Se connecter professeur</h2>.
      * Méthode pour se connecter en tant que professeur.
+     * 
      * @author antonin
      * @throws java.io.IOException
      */
@@ -192,6 +192,7 @@ public class FXMLConnexionController implements Initializable {
      * 
      * <h2>Se connecter etudiant</h2>.
      * Méthode pour se connecter en tant qu'etudiant.
+     * 
      * @author antonin
      * @throws java.io.IOException
      */    
@@ -269,11 +270,8 @@ public class FXMLConnexionController implements Initializable {
         this.rbAnnee1.setSelected(true);
         
         
-        /*
-        * Listener du champ "mot de passe" : déclenche l'authentification
-        * lors de l'appui sur la touche "enter".
-        */
-        EventHandler mdpFieldListener = new EventHandler<KeyEvent>() {
+        // Listener déclenchant l'authentification lors de l'appui sur la touche "enter".
+        EventHandler authEnterListener = new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent e) {
                 if (e.getCode().equals(KeyCode.ENTER)) {
@@ -281,24 +279,18 @@ public class FXMLConnexionController implements Initializable {
                         pfMotDePasse.getText() != null && !pfMotDePasse.getText().equals("")) {     // et mdp non null
                         try {
                             seConnecter();
-                        } catch (IOException ex) {
-                            Logger.getLogger(FXMLConnexionController.class.getName()).log(Level.SEVERE, null, ex);
-                        } catch (SQLException ex) {
+                        } catch (IOException | SQLException ex) {
                             Logger.getLogger(FXMLConnexionController.class.getName()).log(Level.SEVERE, null, ex);
                         }
                     } else {
-                        Alert alert = new Alert(Alert.AlertType.WARNING);
-                        alert.setTitle("Authentification incomplète");
-                        alert.setHeaderText("Identification Inmpossible");
-                        alert.setContentText("Pas assez d'informations pour vous authentifier,"
-                                + "\nveuillez compléter tous les champs.");
-                        alert.showAndWait();
+                        ErrorManager.missingCredentialsWarner();
                         msgErreur.setText("Complétez les champs manquants.");
                     }
                 }
             }
         };
-        pfMotDePasse.setOnKeyPressed(mdpFieldListener);
+        pfMotDePasse.setOnKeyPressed(authEnterListener);
+        btnConnexion.setOnKeyPressed(authEnterListener);
     }
     
 }
