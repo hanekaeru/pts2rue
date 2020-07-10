@@ -3,10 +3,6 @@ package fr.iut.larochelle.principal;
 import fr.iut.larochelle.database.MessageDuJourDAO;
 import fr.iut.larochelle.database.QuestionDAO;
 import fr.iut.larochelle.question.FXMLQuestionController;
-import fr.iut.larochelle.stats.FXMLStatsController;
-import fr.iut.larochelle.utilisateur.FXMLUtilisateurController;
-import fr.iut.larochelle.configuration.FXMLConfigurationController;
-import fr.iut.larochelle.connexion.FXMLConnexionController;
 import fr.iut.larochelle.modele.Question;
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
 import fr.iut.larochelle.util.ErrorManager;
@@ -44,8 +40,9 @@ import javafx.stage.Window;
 import javafx.util.Callback;
 
 /**
- * <h1>Controller Principale</h1>.
- * Controller gérant l'interface principal.
+ * <h1>Controller Principal</h1>.
+ * Controller gérant l'interface principale.
+ * 
  * @author antonin, maxime, kyllian
  */
 public class FXMLPrincipalController implements Initializable {
@@ -84,23 +81,17 @@ public class FXMLPrincipalController implements Initializable {
     public void ouvrirFenetreStats() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/stats/FXMLStats.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; // Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      // on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      //  On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Statistiques") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
         fenetreSecondaire.setScene(laScene);
-        
-        FXMLStatsController leController;       // Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+
+        fenetreSecondaire.showAndWait();
     }
     
     /**
@@ -133,23 +124,18 @@ public class FXMLPrincipalController implements Initializable {
 
 
         SplitPane laPage = (SplitPane) leLoader.load() ;
-        Stage fenetreSecondaire = new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Question du " + item.toString()) ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
+        fenetreSecondaire.setScene(laScene);
+
         
-        FXMLQuestionController leController = new FXMLQuestionController();        //Création du Controller associé à la fenêtre secondaire
-        leController = leLoader.getController();
-        
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.showAndWait();
     }
     
     /**
@@ -162,23 +148,17 @@ public class FXMLPrincipalController implements Initializable {
     public void ouvrirFenetreConfiguration() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/configuration/FXMLConfiguration.fxml") ) ;
         AnchorPane laPage = (AnchorPane)leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; // Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      // on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      //  On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Configuration") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
         fenetreSecondaire.setScene(laScene);
-        
-        FXMLConfigurationController leController;       // Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+
+        fenetreSecondaire.showAndWait();
     }
     
     /**
@@ -190,23 +170,17 @@ public class FXMLPrincipalController implements Initializable {
     public void ouvrirFenetreUtilisateur() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/utilisateur/FXMLUtilisateur.fxml"));
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLUtilisateurController leController;     //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     /**
@@ -230,26 +204,20 @@ public class FXMLPrincipalController implements Initializable {
         FXMLLoader leLoader = new FXMLLoader(getClass().getResource("/fr/iut/larochelle/connexion/FXMLConnexion.fxml"));
         
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage();
+        Stage fenetreSecondaire = new Stage();
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimensionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLConnexionController leController;
-        
-        leController = leLoader.getController();
+        fenetreSecondaire.setScene(laScene);
+
         
         quitter();
         
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.showAndWait();
     }
     
     /**
@@ -264,7 +232,7 @@ public class FXMLPrincipalController implements Initializable {
             Marche uniquement pour les questions chargées en base (du 20 au 29
             juin 2018, voir database/insert.sql) et la question du 22 juin 2017
             (ajoutée lors du développement (je crois), voir database/seg0/c1040.dat
-            créé le 23/06/2018).
+            créé le 23/06/2018). Idem question du 01/07/2020.
         */
         
         DatePicker dateTest = new DatePicker();

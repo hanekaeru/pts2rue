@@ -1,15 +1,12 @@
 package fr.iut.larochelle.connexion;
 
 import fr.iut.larochelle.database.UtilisateurDAO;
-import fr.iut.larochelle.anonyme.FXMLAnonymeController;
 import fr.iut.larochelle.modele.Etudiant;
 import fr.iut.larochelle.modele.Matiere;
 import fr.iut.larochelle.modele.Niveau;
 import fr.iut.larochelle.modele.Professeur;
 import fr.iut.larochelle.modele.Statistiques;
 import fr.iut.larochelle.modele.Utilisateur;
-import fr.iut.larochelle.principal.FXMLPrincipalController;
-import fr.iut.larochelle.professeur.FXMLProfesseurController;
 import fr.iut.larochelle.util.ErrorManager;
 import java.awt.Desktop;
 import java.io.IOException;
@@ -27,7 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
-import javafx.scene.control.Label;  //Label à rajouter pour les erreurs de mot de passe
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.SplitPane;
@@ -94,24 +91,18 @@ public class FXMLConnexionController implements Initializable {
         //todo
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/anonyme/FXMLAnonyme.fxml"));
         SplitPane laPage = (SplitPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage();
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Révi'Tech [Anonyme]") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLAnonymeController leController;
-        
-        leController = leLoader.getController();
+        fenetreSecondaire.setScene(laScene);
+
         quitter();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.showAndWait();
     }
     
     /**
@@ -168,24 +159,18 @@ public class FXMLConnexionController implements Initializable {
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/professeur/FXMLProfesseur.fxml"));
         
         SplitPane laPage = (SplitPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage();
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Révi'Tech [Professeur]") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLProfesseurController leController;
-        
-        leController = leLoader.getController();
+        fenetreSecondaire.setScene(laScene);
+
         quitter();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.showAndWait();
     }
     
     /**
@@ -200,24 +185,18 @@ public class FXMLConnexionController implements Initializable {
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/principal/FXMLPrincipal.fxml"));
         
         SplitPane laPage = (SplitPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage();
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Révi'Tech [Etudiant]") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
         fenetreSecondaire.setScene(laScene);
-        
-        FXMLPrincipalController leController;
-        
-        leController = leLoader.getController();
+
         quitter();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.showAndWait();
     }
     
     /**
@@ -248,6 +227,7 @@ public class FXMLConnexionController implements Initializable {
     /**
      * <h2>Quitter la fenetre</h2>.
      * Quitter la fenetre actuelle.
+     * 
      * @author maxime
      */
     public void quitter(){

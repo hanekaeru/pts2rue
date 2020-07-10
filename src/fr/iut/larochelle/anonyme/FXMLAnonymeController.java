@@ -38,7 +38,7 @@ import javafx.util.Callback;
  * <h1>FXML Controller Anonyme</h1>
  * Controller qui va gérer l'interface de connexion anonyme.
  * 
- * @author maxim
+ * @author maxime
  */
 public class FXMLAnonymeController implements Initializable {
     
@@ -79,23 +79,17 @@ public class FXMLAnonymeController implements Initializable {
         
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/question/FXMLQuestion.fxml") ) ;
         SplitPane laPage = (SplitPane) leLoader.load() ;
-        Stage fenetreSecondaire = new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Question du " + item.toString()) ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLQuestionController leController = new FXMLQuestionController();        //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     

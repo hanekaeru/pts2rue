@@ -1,5 +1,6 @@
 package fr.iut.larochelle.question;
 
+import fr.iut.larochelle.util.Chrono;
 import fr.iut.larochelle.modele.Question;
 import fr.iut.larochelle.principal.FXMLPrincipalController;
 import fr.iut.larochelle.util.ErrorManager;
@@ -35,6 +36,7 @@ public class FXMLQuestionController implements Initializable {
     
     
     // inutile ici car static dans FXMLPrincipalController..
+    // EDIT : ok pour étudiant connecté mais lorsque anonyme !! Pb !!
     private Question question;
     
     @FXML

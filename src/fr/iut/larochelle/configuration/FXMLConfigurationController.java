@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.ColorPicker;
-import javafx.scene.control.Label;  //Label à rajouter pour les erreurs de mot de passe
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -18,6 +17,7 @@ import javafx.stage.Window;
 /**
  * <h1>Controller de l'interface de Configuration</h1>.
  * Controller gérant l'interface de configuration utilisateur.
+ * 
  * @author antonin
  */
 public class FXMLConfigurationController implements Initializable {

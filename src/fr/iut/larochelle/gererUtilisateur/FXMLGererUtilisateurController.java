@@ -21,12 +21,9 @@ import javafx.stage.Window;
  * FXML controller, permettant d'acceder à la gestion d'utilisateur
  * dans la base de données.
  *
- * @author maxim
+ * @author maxime
  */
-
 public class FXMLGererUtilisateurController implements Initializable {
-    
-    
     
     @FXML
     private Button btnQuitter;
@@ -40,9 +37,6 @@ public class FXMLGererUtilisateurController implements Initializable {
     private Window sPrimaryStage;
     
     
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -57,46 +51,34 @@ public class FXMLGererUtilisateurController implements Initializable {
     public void accederAjouterUtilisateur() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gererUtilisateur/FXMLAjouterUtilisateur.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load();
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Ajouter un Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLAjouterUtilisateurController leController;       //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     
     public void accederModifierUtilisateur() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gererUtilisateur/FXMLModifierUtilisateur.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load();
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Modifier un Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLModifierUtilisateurController leController;       //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     /*
@@ -108,23 +90,17 @@ public class FXMLGererUtilisateurController implements Initializable {
     public void accederSupprimerUtilisateur() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gererUtilisateur/FXMLSupprimerUtilisateur.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load();
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Supprimer un Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLSupprimerUtilisateurController leController;       //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     

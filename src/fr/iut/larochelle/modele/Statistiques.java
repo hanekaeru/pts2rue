@@ -9,9 +9,8 @@ import java.sql.SQLException;
  * Classe Statistiques permettant de calculer à l'aide de la
  * base de données les statistiques de l'onglet Stats de l'application.
  *
- * @author maxim
+ * @author maxime
  */
-
 public class Statistiques {
     private int nombreQuestion;
     private int nombreBonnesQuestions;

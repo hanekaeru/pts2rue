@@ -10,13 +10,14 @@ import javafx.fxml.Initializable;
  * FXML controller, permettant de modifier Evenement
  * dans la base de données.
  *
- * @author maxim
+ * @author maxime
  */
-
 public class FXMLModifierActifEvenementController implements Initializable {
     
     /**
      * Initializes the controller class.
+     * @param url
+     * @param rb
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {

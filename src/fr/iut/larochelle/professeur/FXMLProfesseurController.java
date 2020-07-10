@@ -2,12 +2,7 @@ package fr.iut.larochelle.professeur;
 
 import fr.iut.larochelle.database.MessageDuJourDAO;
 import fr.iut.larochelle.database.UtilisateurDAO;
-import fr.iut.larochelle.configuration.FXMLConfigurationController;
-import fr.iut.larochelle.gererEvenement.FXMLGestioneEvenementController;
-import fr.iut.larochelle.gererUtilisateur.FXMLGererUtilisateurController;
-import fr.iut.larochelle.gestionquestion.FXMLGestionQuestionController;
 import fr.iut.larochelle.modele.Utilisateur;
-import fr.iut.larochelle.modererMessage.FXMLModererMessageController;
 import fr.iut.larochelle.principal.FXMLPrincipalController;
 import com.sun.javafx.scene.control.skin.DatePickerSkin;
 import java.io.IOException;
@@ -40,6 +35,7 @@ import javafx.util.Callback;
 /**
  * <h1>Controller Professeur</h1>
  * Controller gérant l'interface professeur.
+
  * @author Antonin
  */
 public class FXMLProfesseurController implements Initializable {
@@ -70,179 +66,155 @@ public class FXMLProfesseurController implements Initializable {
         //this.btnTest.setGraphic(this.btnStats); inutile
     }
     
+
+    /**
+     * Création d'une méthode qui permet d'accéder à la fenêtre "Édition des Questions"
+     * Edite TOUTES les question (btn associé)
+     * 
+     * @throws IOException
+     */
+    @FXML
     public void ouvrirEditionQuestion() throws IOException{
-        FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gestionquestion/FXMLGestionQuestion.fxml") ) ;
+        FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gererQuestion/FXMLGererQuestion.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Édition des questions") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLGestionQuestionController leController;       //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     
     
-    /*
-    Création d'une méthode qui permet d'accéder à la fenêtre "Édition des Questions"
-    */
-    
     /**
      * <h2>Ouvrir Edition question</h2>
-     * Ouvre la fenetre permettant d'editer une question.
+     * Ouvre la fenetre permettant d'éditer UNE question.
+     * 
      * @author antonin
+     * @param item
      * @throws IOException
+     * @throws java.sql.SQLException
      */
     public void ouvrirFenetreQuestion(LocalDate item) throws IOException, SQLException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gestionquestion/FXMLGestionQuestion.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
-        
-        fenetreSecondaire.setTitle("Édition des questions") ;
+        fenetreSecondaire.setTitle("Édition une question") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLGestionQuestionController leController;       //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     /**
      * <h2>Acceder gerer Utilisateur</h2>
-     * Methode permettant d'acceder a l'interface de gestion des utilisateurs (admin).
-     * @maxim
+     * Methode permettant d'acceder à l'interface de gestion des utilisateurs (admin).
+     * 
+     * @author maxime
      * @throws IOException
      */    
     public void accederGererUtilisateur() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gererUtilisateur/FXMLGererUtilisateur.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Gestion Utilisateur") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLGererUtilisateurController leController;       //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     /**
      * <h2>Ouvrir Edition Evenement</h2>
      * Ouvre la fenetre permettant d'editer un evenement.
+     * 
      * @author antonin
      * @throws IOException
      */    
     public void ouvrirEditionEvenement() throws IOException{
-        FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gererEvenement/FXMLGestioneEvenement.fxml") ) ;
+        FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/gererEvenement/FXMLGererEvenement.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
-        
-        fenetreSecondaire.setTitle("Question du *date*") ;
+        fenetreSecondaire.setTitle("Edition d'événement") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLGestioneEvenementController leController;        //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     
     /**
      * <h2>Ouvrir Fenetre Calendrier</h2>
      * Ouvre la fenetre du calendrier.
+     * 
      * @author antonin
      * @throws IOException
      */    
     public void ouvrirFenetreCalendrier() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("") ) ;
         AnchorPane laPage = (AnchorPane)leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
-        
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
         fenetreSecondaire.setTitle("Configuration") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLConfigurationController leController;       //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     
     /**
      * <h2>Ouvrir Fenetre Modération</h2>
      * Ouvre la fenetre permettant de moderer le message de la semaine.
+     * 
      * @author antonin
      * @throws IOException
      */    
     public void ouvrirFenetreModeration() throws IOException{
         FXMLLoader leLoader = new FXMLLoader (getClass().getResource("/fr/iut/larochelle/modererMessage/FXMLModererMessage.fxml") ) ;
         AnchorPane laPage = (AnchorPane) leLoader.load() ;
-        Stage fenetreSecondaire= new Stage() ;
+        Stage fenetreSecondaire = new Stage(StageStyle.UTILITY);
         
-        StageStyle stageStyle = StageStyle.UTILITY; //Fenetre "minimaliste"
-        fenetreSecondaire.initStyle(stageStyle);
+        fenetreSecondaire.setResizable(false);      // On empeche le redimensionnement de la fenetre
         
-        fenetreSecondaire.setResizable(false);      //on empeche le redimentionnement de la fenetre
-        
-        fenetreSecondaire.setTitle("Utilisateur") ;
+        fenetreSecondaire.setTitle("Modération du message") ;
         fenetreSecondaire.initModality(Modality.WINDOW_MODAL) ;
         fenetreSecondaire.initOwner(this.sPrimaryStage);
         Scene laScene = new Scene(laPage);
-        fenetreSecondaire.setScene( laScene);
-        
-        FXMLModererMessageController leController;     //Création du Controller associé à la fenêtre secondaire
-        
-        leController = leLoader.getController();
-        fenetreSecondaire.showAndWait() ;
+        fenetreSecondaire.setScene(laScene);
+
+        fenetreSecondaire.showAndWait();
     }
     
     /**
      * <h2>Init Calendrier</h2>
      * Méthode implementant la calendrier des questions.
+     * 
      * @author antonin
      */
     public void initCalendrier(){
@@ -307,6 +279,7 @@ public class FXMLProfesseurController implements Initializable {
     
     /**
      * <h2>Quitter la fenetre</h2>
+     *
      * @author maxime
      */
     public void quitter(){

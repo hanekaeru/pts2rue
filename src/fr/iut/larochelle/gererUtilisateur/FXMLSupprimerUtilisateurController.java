@@ -15,10 +15,6 @@ import javafx.scene.control.TableView;
 
 public class FXMLSupprimerUtilisateurController implements Initializable {
     
-    /**
-     * Initializes the controller class.
-     */
-    
     @FXML
     private ComboBox cbNiveau;
     
@@ -37,7 +33,7 @@ public class FXMLSupprimerUtilisateurController implements Initializable {
      * FXML controller, permettant de supprimer un utilisateur
      * dans la base de données.
      *
-     * @author maxim
+     * @author maxime
      */
     public void supprimerUser(){
         UtilisateurDAO userDAO = new UtilisateurDAO();
